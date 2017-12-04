@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>anymedia - anymedia平台网络-网站服务系统-建站登录-anymedia响应式建站-建站注册</title>
+</head>
+<link rel="stylesheet"  href="../lib/bootstrap-3.3.5/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome-4.5.0/css/font-awesome.css"/>
+<link rel="stylesheet"  href="/css/login.css"/>
+<link rel="stylesheet"  href="/lib/scrollbar/scrollbar.css">
+<body>
+  <div class="container-fluid z102_login_hm" style="padding: 0;">
+     <!--页面头部-->
+      <div class="row z102_login_title" >
+          <div class=" col-lg-12 col-md-12  ">
+              <div class="z102_login_logo"></div>
+              <div class="z102_login_website">
+                  <div class="z102_login_webFont"><a target="_blank" href="http://www.anymedia.com">进入官网</a></div>
+                  <div class="z102_login_webLogo"></div>
+              </div>
+
+          </div>
+
+      </div>
+      <!--页面内容块-->
+      <div class="row z102_login_content">
+
+          <ul class="col-lg-12 z102_login_cont">
+              <!--登录块-->
+              <form th:action="@{/login}" action="/login" method="post">
+              <li class=" z102_loginging_blank z102_login_plate" style="display:block">
+                  <div class="z102_loginging_logo">账号登录</div>
+                  <div class="z102_phone_number">
+                      <div class="form-group " style="margin:20px 0 0px 0; height:40px; ">
+
+                          <input  class="form-control login_ve keyup_input"  name="username"  placeholder="请输入手机号" style="height:38px" />
+                      </div>
+                      <div class="z102_phoneNumber_error phoneInfo"   th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">输入正确的账号</div>
+                      <div class="form-group " style="margin:10px 0 0 0 ">
+                          <input id="loginPasswordNumber" class="form-control login_ve keyup_input" type="password" name="password" placeholder="请输入密码" style="height:38px"/>
+                      </div>
+                     <!--  <div class="z102_phonePassword_error" style="display: block;">请输入正确的密码</div> -->
+                      <!--输入验证码-->
+                      <ul class="z102_code_Verification" style="display:none">
+                          <li class="form-group" style="float:left;width:35%; margin-top:5px;">
+                              <input id="phoneCode" class="form-control login_ve keyup_input"  placeholder="输入验证码"/>
+                          </li>
+                          <li class="z102_code_pic" style=" margin:0px 0 0 15px;"><div class="z102_code_pic"><img id="loginCodeImg" src="" alt=""/></div></li>
+                          <li class="z102_code_fonts loginCodeChange">换一个</li>
+                      </ul>
+
+                      <!--登录按钮-->
+                      <input type="submit"  value="登录" class="z102_phoneButton loginButton"/>
+                      <!--登录底部-->
+                      <div class="z102_loginging_filter">
+                          <div class="z102_Forgot_filter">忘记密码?</div>
+                          <div class="z102_Forgot_register">还没有账号？<span class="registerClick">点击注册>></span></div>
+                      </div>
+                  </div>
+              </li>
+              </form>
+              <!--忘记密码-->
+              <li class="z102_loginging_blank forget_password" style="display:none">
+                <div class="z102_loginging_logo"style="color:#333333">找回密码</div>
+                <ul class="z102_forget_cont">
+                      <li class="form-group " style="margin:20px 0 0px 0; height:40px; ">
+                          <input  class="form-control forget_ve keyup_input" id="fogetPhoneNumber"  placeholder="输入手机号" style="height:38px"/>
+                      </li>
+                      <li><div class="z102_phoneNumber_error phone_error " style="display:none;"></div></li>
+                          <!--收到验证码-->
+                      <li class="z102_forget_phoneNumber">
+                          <div class="form-group" style="float:left;width:51%; margin:10px 0 0 0; float: left">
+                              <input class="form-control forget_ve keyup_input" id="forgetphoneCode"  placeholder="收到的短信验证码"/>
+                          </div>
+                          <button class="z102_forget_time" id="btn" onclick="sendMessage()">发送验证码<span></span></button>
+
+                      </li>
+                       <li><div class="z102_phoneNumber_error code_error " style="display:none; margin:0px; height:30px"></div></li>
+                      <li class="form-group " style="margin:0px; height:40px; ">
+                          <input type="password" class="form-control forget_ve keyup_input" id="newPassword"   placeholder="请在此输入新密码，长度6-16位之间" style="height:38px"/>
+                      </li>
+                      
+                       <li><div class="z102_phoneNumber_error  newPassword_error "  style="display:none; margin:10px 0 0 0; "></div></li>
+                       <li class="form-group " style="margin:10px 0 0 0; height:40px; ">
+                          <input  type="password" class="form-control forget_ve keyup_input" id="confirmPassword"   placeholder="请再次输入新密码" style="height:38px"/>
+                      </li>
+                       <li><div class="z102_phoneNumber_error confirmPassword_error" style="display:none; margin:10px 0 0 0;"></div></li>
+                </ul>
+                 <!--重置按钮-->
+                      <div class="z102_forget_bt"><button class="z102_forgetButton ">重置</button></div>
+                     <div class="z102_message_filter">
+                          <div class="z102_Forgot_message_filter_back_login">返回登录</div>
+                          <div class="z102_message_register_back_regist">还没有账号？<span class="clickLogin_back_regist">点击注册>></span></div>
+                      </div>
+                
+              </li>
+              
+              <!--注册块-->
+              <li class="z102_loginging_blank z102_register_plate" style="display:none;">
+                  <div class="z102_register_logo" style="color:#333333">请使用手机号注册</div>
+                   <ul class="z102_please_register">
+                       <li class="form-group " style="margin:20px 0 0 0 ">
+
+                           <input id="phoneNumber" class="form-control register_ve keyup_input"   placeholder="请输入手机号" style="height:38px"/>
+                       </li>
+                       <li class="z102_phonePassword_error errorInfo" style="display: none;">请输入正确的手机号</li>
+                       <!--输入验证码-->
+                       <li class="z102_register_Verification">
+                           <div class="form-group" style="float:left;width:35%; margin:3px 0 0 0;">
+                               <input id="codeNumber" class="form-control register_ve keyup_input"  placeholder="输入验证码"/>
+                           </div>
+                           <div class="z102_code_pic" style=" margin:0 0 0 15px;"><img id="codeImg" src="" alt=""/></div>
+                           <div class="z102_code_fonts">换一个</div>
+                       </li>
+                       <!--免责声明-->
+                       <li class="z102_statement">
+                           <div class="checkbox" style="height:28px;">
+                               <label>
+                                   <input type="checkbox"  id="stateChecked" value="" style="margin-top:10px;margin-left:-18px;" />
+     
+                               </label>
+                               <span class="z102_statement_fonts"> 我已认真阅读并接受<a class="lyh_statement_model">《免责声明》</a></span>
+                           </div>
+
+                       </li>
+                       <!--注册按钮-->
+                       <li style="height:60px" ><button class="z102_statement_Button">注册</button></li>
+                        <!--注册底部-->
+                      <li class="z102_register_filter">
+                          <div class="z102_Forgot_statement">已有账号？<span class="loginClick">点击登录>></span></div>
+                      </li>
+                   </ul>
+              </li>
+              <!--短信验证码-->
+              <li class="z102_loginging_blank z102_Message_plate" style="display:none;">
+                  <div class="z102_Message_plate_title">
+                      <div class="z102_Message_fontTitle">填写短信验证码密码完成注册</div>
+                      <div class="z102_Message_title_font" style=" display: block;">短信验证码已发送至<span class="z102_Message_title_fonts"></span></div>
+                  </div>
+                  <ul class="z102_message_cont">
+                      <!--收到验证码-->
+                      <li class="z102_message_Verification">
+                          <div class="form-group" style="float:left;width:51%; margin:30px 0 0 0; float: left">
+                              <input id="codeNewNumber" class="form-control sumbit_ve keyup_input"  placeholder="收到的验证码"/>
+                          </div>
+                          <button class="z102_message_time" id="get_vercode"  >重新发送<span></span></button>
+
+                      </li>
+                       <li><div class="z102_phoneNumber_error errorpassword" style="display: none;">请输入正确的密码</div></li>
+                      <li class="form-group " style="margin:10px 0 0 0 ">
+
+                          <input id="passwordNumber" type="password" class="form-control sumbit_ve keyup_input"   placeholder="包含两种字符以上且长度大于6,特殊字符仅.,!@#$%^&*" style="height:38px"/>
+                      </li>
+                      <!--注册按钮-->
+                      <li style="height:40px;margin-top:20px;" ><button id="sumbitButton" class="z102_message_Button">提交</button></li>
+                      <li class="z102_message_filter">
+                          <div class="z102_Forgot_message_filter"> << 返回修改手机号  </div>
+                          <div class="z102_message_register">已有账号？<span class="clickLogin">点击登陆>></span></div>
+                      </li>
+                  </ul>
+
+              </li>
+
+
+          </ul>
+
+
+      </div>
+      <!--页面底部-->
+      <div class="row  z102_login_filter">
+          <div class="col-lg-12 ">Copright © 2016 www.Anymedia.cn All Rights Reserved 京ICP备16000655号-2</div>
+
+      </div>
+
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-1.11.3.min.js"></script>
+  <script>
+   $(document).ready(function(){
+      $(window).resize(function(){
+          var z102_login_title= $('.z102_login_title').height();
+          var z102_login_filter = $('.z102_login_filter').height();
+          $('.z102_login_content').height(
+                  ($(window).height()-(z102_login_title+z102_login_filter))+'px'
+          );
+          console.log($(document).height()-(z102_login_title+z102_login_filter));
+          var bacHeight =  $('.z102_login_content').height();
+          var abc =$('.z102_loginging_blank').height();
+          $('.z102_loginging_blank').css({'margin-top':((bacHeight-abc)/2)+'px'});
+      });
+       $(window).resize();
+
+   })
+   
+   
+</script>
+<script type="text/javascript">
+	$(function(){
+		$('.lyh_statement_model').on('click',function(e){
+				
+			   $('.lyh_manage_content_model').css({'display':'block'});
+		   });
+		//点击不同意按钮
+		$("#manage-exit-name").unbind('click').click(function(){
+			$("#stateChecked").prop('checked',false);
+			$('.lyh_manage_content_model').css({'display':'none'});
+		});
+		//点击同意按钮
+		$("#manage-confir-name").unbind('click').click(function(){
+			$("#stateChecked").prop('checked',true);
+			$('.lyh_manage_content_model').css({'display':'none'});
+		});
+	})
+</script>
+</body>
+
+
+
+</html>

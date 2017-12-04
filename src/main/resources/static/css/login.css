@@ -1,0 +1,567 @@
+@media screen and (max-width:1920px)and (min-width: 760px){
+    body{
+        width:100%;
+        font-family: "微软雅黑","Microsoft YaHei"
+    }
+}
+.z102_login_title{
+   width: 100%;
+    height:50px;
+    margin:0;
+    padding:0;
+    background-color:#ffffff;
+}
+.z102_login_logo{
+    width:111px;
+    height:50px;
+    float: left;
+    background:url("/pic/llh-ptwl-logoimage.png")  no-repeat;
+    background-size:100%;
+    background-position:center center;
+    margin-left:40px;
+}
+.z102_login_website{
+    /*width:30%;*/
+    height:50px;
+    float: right;
+}
+.z102_login_webFont{
+    float:right;
+    height:50px;
+    font-size:14px;
+    margin-right:40px ;
+    line-height:50px;
+}
+.z102_login_webFont>a{
+    color:#808080;
+    outline: none;
+    text-decoration: none;
+}
+.z102_login_webFont:hover>a{
+    color:#ff0000;
+}
+.z102_login_webLogo{
+    width:14px;
+    height:50px;
+    background:url("/pic/llh-ptwl-link-icon.png") center center no-repeat;
+    float: right;
+    margin-right:6px;
+}
+/*内容块*/
+/*.z102_login_content{
+    width:100%;
+    padding: 0;
+    margin:0;
+
+    background:url("https://cdn.anymedia.cn/pic/llh-ptwl-login-bgimg.jpg") center center no-repeat;
+}*/
+
+.z102_login_cont{
+    width:100%;
+    margin:0;
+    padding:0;
+}
+@media screen and (max-width:1920px){
+    .z102_login_content{
+        padding: 0;
+        margin:0;
+        width:100%;
+        background:url("/pic/llh-ptwl-login-bgimg1.jpg") center center  no-repeat;
+        background-size:cover ;
+    }
+}
+
+.z102_login_cont>li{
+    list-style: none;
+}
+
+/*登录*/
+.z102_loginging_blank{
+    width:380px;
+    background:rgba(255,255,255,1);
+    margin: 0 auto;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -o-border-radius:3px;
+    box-shadow: 0px 0px 6px rgba(89, 89, 89, 0.14);
+    -webkit-box-shadow: 0px 0px 6px rgba(89, 89, 89, 0.14);
+    -moz-box-shadow: 0px 0px 6px rgba(89, 89, 89, 0.14);
+    -o-box-shadow: 0px 0px 6px rgba(89, 89, 89, 0.14);
+}
+.z102_login_plate{
+    display: none;
+}
+.z102_loginging_logo{
+    width:322px;
+    height:70px;
+    margin:0 auto;
+    line-height:70px;
+    text-align:center;
+    font-size:20px;
+    border-bottom: 1px solid #e5e5e5;/* 
+    background:url("https://cdn.anymedia.cn/pic/llh-ptwl-login-font2.png") center center no-repeat; */
+}
+.z102_phone_number{
+    width:303px;
+    margin:0 auto;
+}
+.z102_phoneNumber_error{
+    width:303px;
+    margin:10px auto 0 auto;
+    height:20px;
+    line-height:20px;
+    font-size:12px;
+    color:#f00000;
+    text-indent:5px;
+}
+.z102_phonePassword_error{
+    width:303px;
+    margin:5px auto 0 auto;
+    height:20px;
+    line-height:20px;
+    font-size:12px;
+    color:#f00000;
+    text-indent:5px;
+}
+.z102_phoneButton{
+    width:303px;
+    height:38px;
+    font-size:16px;/* 
+    line-height:38px; */
+    margin:15px auto 0 auto;
+    background:#ff0000;
+    color:#ffffff;
+    border-radius:5px;
+    text-align: center;
+    letter-spacing:2px;
+    cursor: pointer;
+    border: 1px solid #f43824; 
+}
+
+.z102_phoneButton:hover{
+      background:#f43824 !important;
+}
+.z102_loginging_filter{
+    width:292px;
+    margin:0 auto;
+    height:60px;
+}
+.z102_Forgot_filter{
+    width:40%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    cursor:pointer;
+}
+.z102_Forgot_filter:hover{
+    color:#9a6c47;
+}
+.z102_Forgot_register{
+    width:60%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    text-align: right;
+}
+.z102_Forgot_register>span:hover{
+    color:#9a6c47;
+    cursor: pointer;
+}
+.z102_code_Verification{
+    width:303px;
+    height:50px;
+    margin: 10px auto 0 auto;
+    padding:0;
+
+}
+.z102_code_Verification>li{
+    list-style: none;
+    margin:0;
+}
+.z102_code_pic{
+    width:110px;
+    float: left;
+    height:40px;
+   border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+}
+.z102_code_pic>img{
+	width:100%;
+	height:100%;
+}
+.z102_code_fonts{
+    width:20%;
+    float:right;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    color:#333333;
+    cursor: pointer;
+    text-indent:15px;
+}
+.z102_code_fonts:hover{
+    color:#9a6c47;
+}
+/*登录底部*/
+.z102_login_filter{
+    width:100%;
+    background:#ffffff;
+    padding:0;
+    margin:0;
+}
+.z102_login_filter>div{
+    width:100%;
+    height:60px;
+    line-height:50px;
+    text-align: center;
+    font-size:12px;
+    color:#808080;
+    letter-spacing:1px;
+}
+/*注册块*/
+.z102_register_plate{
+  display: none;
+}
+.z102_register_logo{
+    width:322px;
+    height:70px;
+    margin:0 auto;
+    line-height:70px;
+    text-align:center;
+    font-size:20px;
+    border-bottom: 1px solid #e5e5e5;/* 
+    background:url("https://cdn.anymedia.cn/pic/llh-ptwl-login-font1.png") center center no-repeat; */
+}
+.z102_please_register{
+    width:303px;
+    margin:0 auto;
+    padding: 0;
+}
+.z102_please_register>li{
+    list-style: none;
+}
+.z102_register_Verification{
+    width:303px;
+    height:45px;
+    margin: 10px auto 0 auto;
+    padding:0;
+}
+.z102_register_Verification>li{
+    list-style: none;
+    margin:0;
+}
+.z102_statement{
+    width:303px;
+    height:40px;
+    margin:0 auto;
+
+}
+.z102_statement_fonts{
+    font-size:12px;
+    color:#333333;
+    line-height:1px;
+    letter-spacing: 1px;
+    cursor: text;
+}
+.z102_statement_fonts>a{
+    text-decoration:none;
+    outline: none;
+    color:#333333;
+    cursor:pointer;
+}
+.z102_statement_fonts>a:hover{
+    color:#f00000;
+}
+.z102_statement_Button{
+    width:303px;
+    height:38px;
+    font-size:16px;
+    line-height:32px;
+     background:#ff0000;
+    margin: 0 auto;
+    color:#ffffff;
+    border-radius:5px;
+    text-align: center;
+    letter-spacing:2px;
+    cursor: pointer;
+    border:1px solid #f43824;
+}
+
+.z102_statement_Button:hover{
+   
+    background:#f43824;
+}
+.z102_register_filter{
+    width:303px;
+    margin:0 auto;
+    height:40px;
+}
+.z102_Forgot_statement{
+    width:60%;
+    float:right;
+    height:40px;/* 
+    line-height:10px; */
+    color:#333333;
+    font-size:12px;
+    text-align: right;
+}
+.z102_Forgot_statement>span:hover{
+    color:#9a6c47;
+    cursor: pointer;
+}
+/*短信验证*/
+.z102_Message_plate{
+   /* display: none;*/
+}
+.z102_Message_plate_title{
+    width:322px;
+    margin:0 auto;
+    border-bottom: 1px solid #e5e5e5;
+}
+.z102_Message_fontTitle{
+    color:#333333;
+    height:80px;
+    font-size:20px;
+    text-align: center;
+    line-height:100px;
+    width:100%;
+    font-weight:400;    
+}
+.z102_Message_title_font{
+    width:100%;
+    text-align: center;
+    font-size:14px;
+    color:#808080;
+    height:30px;
+
+}
+.z102_Message_title_fonts{
+    color:#f43824;
+}
+.z102_message_cont{
+    width:303px;
+    margin:0 auto;
+    padding:0;
+}
+.z102_message_cont>li{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.z102_message_Verification{
+    width:100%;
+    height:65px;
+}
+.z102_message_time{
+    width:43%;
+    float: left;
+    height:35px;
+    margin-left:5%;
+    border:1px solid #bababa;
+    margin-top:30px;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    -o-border-radius:2px;
+    text-align: center;
+    cursor: pointer;
+    line-height:35px;
+    font-size:14px;
+    background:#f5f5f5;
+    color:#333333;
+}
+.z102_message_Button{
+    width:303px;
+    height:38px;
+    font-size:16px;
+    line-height:32px;
+    margin: 0 auto; 
+    background:#ff0000;
+    color:#ffffff;
+    border-radius:5px;
+    text-align: center;
+    letter-spacing:2px;
+    cursor: pointer;
+    border:1px solid #f43824;
+}
+
+.z102_message_Button:hover{
+   
+    background:#f43824;
+}
+.z102_message_filter{
+    width:303px;
+    margin:0 auto;
+    height:60px;
+}
+.z102_Forgot_message_filter{
+    width:40%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    cursor:pointer;
+}
+.z102_Forgot_message_filter:hover{
+    color:#9a6c47;
+}
+
+.z102_Forgot_message_filter_back_login{
+    width:40%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    cursor:pointer;
+}
+.z102_Forgot_message_filter_back_login:hover{
+    color:#9a6c47;
+}
+.z102_message_register{
+    width:60%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    text-align: right;
+}
+.z102_message_register>span:hover{
+    color:#9a6c47;
+    cursor: pointer;
+}
+.z102_message_register_back_regist{
+    width:60%;
+    float:left;
+    height:50px;
+    line-height:50px;
+    color:#333333;
+    font-size:12px;
+    text-align: right;
+}
+.z102_message_register_back_regist>span:hover{
+    color:#9a6c47;
+    cursor: pointer;
+}
+/*条款弹出框 */
+.lyh_manage_content_model{
+    width:100%;height: 100%;
+    z-index:100;
+    background-color: rgba(0,0,0,0.3);
+    position:absolute;top:0px;left:0px;display:none;
+}
+
+.lyh_manage_content_model .lyh_manage_model{
+    width:720px;margin:50px auto 0 auto;background-color: #fff;
+    height: 500px;border-radius: 2px;font-size: 12px;
+    border-radius:5px;
+}
+.lyh_manage_content_model .lyh_manage_model_title{
+    width:100%;height:40px;font-size: 14px;
+    border-bottom: 1px solid #cdcdcd;border-radius: 2px 2px 0 0;text-indent: 8px;line-height: 41px;
+    text-align:center;
+}
+
+
+
+ .lyh_manage_content_model .lyh_manage_model_context{
+   height:400px;border-bottom: 1px solid #cdcdcd;
+    overflow:auto;	
+    }
+
+.lyh_manage_content_model .info_box{
+    float:left;margin-left:4px;
+   display: none;
+}
+.model-pageName .info_box{
+    float:left;margin-left:4px;
+}
+.lyh_manage_content_model .lyh_model_bottom{
+	float:right;
+  	height: 30px;padding: 5px 0;
+    margin:1% 40% 0;
+}
+.lyh_manage_bottom{
+    float:right;margin-right: 10px;font-size: 14px;
+    border: 1px solid #cdcdcd;padding:4px 12px;border-radius: 2px;cursor:pointer;
+}
+.lyh_manage_bottom:hover{
+    background-color: #efefef;
+    color: #333;
+}
+/* 忘记密码块 */
+.z102_forget_cont{
+	width:303px;
+	margin:0 auto;
+	padding:0;
+}
+.z102_forget_cont>li{
+	list-style:none;
+}
+.z102_forget_phoneNumber{
+	 width:100%;
+    height:55px;
+}
+.z102_forget_time{
+    width:43%;
+    float: left;
+    height:35px;
+    margin-left:5%;
+    border:1px solid #bababa;
+    margin-top:10px;
+    border-radius:2px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    -o-border-radius:2px;
+    text-align: center;
+    cursor: pointer;
+    font-size:14px;
+    background:#f5f5f5;
+    color:#333333;
+}
+.z102_forget_bt{
+	width:303px;
+	margin:0 auto;
+}
+.z102_forgetButton{
+    width:100%;
+    height:38px;
+    font-size:16px;
+    line-height:32px;
+    margin:10px auto 0 auto;
+    background:#ff0000;
+    color:#ffffff;
+    border-radius:5px;
+    text-align: center;
+    letter-spacing:2px;
+    cursor: pointer;
+    border: 1px solid #f43824; 
+}
+
+.z102_forgetButton:hover{
+      background:#f43824 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

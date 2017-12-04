@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+</head>
+<body>
+<div>INDEX测试</div>
+<div th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}"></div><!--获取当前用户的用户名-->
+<div th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.password}"></div>
+<div th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.email}"></div>
+<div th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.name}"></div>
+<div th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.userType}"></div>
+<div th:text="${session.user.name}"></div><!-- 获取自定义的session内容 -->
+
+<div th:if="${session.SPRING_SECURITY_CONTEXT.authentication.principal.userType}==1">您是超级管理员,可看到该信息:(这里可以用逗号分隔，加入多个角色你拥有管理员权限)</div>
+<div th:if="${session.SPRING_SECURITY_CONTEXT.authentication.principal.userType} eq '2' ">您是超级管理员,可看到该信息:(这里可以用逗号分隔，加入多个角色你拥有管理员权限)</div>
+
+<div> username : <sec:authentication property="name"/></div>
+</body>
+</html>
