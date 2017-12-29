@@ -60,6 +60,8 @@ public class User extends BaseEntity implements Serializable {
     private List<Role> role;
 
     private String userType;
+    
+    private String salt;
 
     public User() {
     }
@@ -158,5 +160,12 @@ public class User extends BaseEntity implements Serializable {
 
 
     
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 
 }

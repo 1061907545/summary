@@ -28,6 +28,7 @@ public class MyUserDetails extends User implements UserDetails{
 			this.setRole(user.getRole());
 			this.setUserType(user.getUserType());
 			this.setUserName(user.getUserName());
+			this.setSalt(user.getSalt());
 			this.authorities=authorities;
 	 }
 	

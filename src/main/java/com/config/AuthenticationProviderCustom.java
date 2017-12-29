@@ -14,6 +14,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.model.User;
+import com.utils.MD5Utile;
+
 public class AuthenticationProviderCustom implements AuthenticationProvider { 
 	
 	@Autowired
@@ -33,6 +36,9 @@ public class AuthenticationProviderCustom implements AuthenticationProvider {
         }  
         if(userDetails == null) {  
             throw new UsernameNotFoundException("用户名/密码无效");  
+        }  
+        if(userDetails == null) {  
+            throw new UsernameNotFoundException("用户名不存在");  
         }else if (!userDetails.isEnabled()){  
             throw new DisabledException("用户已被禁用");  
         }else if (!userDetails.isAccountNonExpired()) {  
@@ -51,11 +57,14 @@ public class AuthenticationProviderCustom implements AuthenticationProvider {
         String password = userDetails.getPassword();  
         //与authentication里面的credentials相比较  
         if(!password.equals(token.getCredentials())) {  
+        if(!password.equals(MD5Utile.GetMD5Code(token.getCredentials()+((User) userDetails).getSalt()))) {  
             throw new BadCredentialsException("密码错误");  
-        }  
+        } 
+        }
         //授权 即登录通过 
         session.setAttribute("user", userDetails);
-        return new UsernamePasswordAuthenticationToken(userDetails, password,userDetails.getAuthorities());  
+        return new UsernamePasswordAuthenticationToken(userDetails, password,userDetails.getAuthorities());
+        
     }  
   
     @Override  

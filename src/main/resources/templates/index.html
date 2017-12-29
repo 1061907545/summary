@@ -5,6 +5,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title>登录</title>
+<style type="text/css">
+.td{
+width:10%;
+height:20px;
+border:1px solid #f43824;
+}
+
+</style>
+
 </head>
 <body>
 <div>INDEX测试</div>
@@ -19,5 +28,141 @@
 <div th:if="${session.SPRING_SECURITY_CONTEXT.authentication.principal.userType} eq '2' ">您是超级管理员,可看到该信息:(这里可以用逗号分隔，加入多个角色你拥有管理员权限)</div>
 
 <div> username : <sec:authentication property="name"/></div>
+<div th:if="${session.SPRING_SECURITY_CONTEXT.authentication.principal.userType} eq 'admin' ">您是超级管理员,可看到该信息:(这里可以用逗号分隔，加入多个角色你拥有管理员权限)</div>
+
+<sec:authentication="name"></sec:authentication>
+<sec:authentication="email"></sec:authentication>
+<sec:authentication="phone"></sec:authentication>
+<sec:authentication="password"></sec:authentication>
+<security:authorize ifAllGranted="USER">
+<p>用户能看到</p>
+</security:authorize>
+<security:authorize ifAllGranted="ROLE_USER">
+<p>用户能看到</p>
+</security:authorize>
+<div sec:authorize="hasRole('USER')"><p>用户能看到</p></div>
+<div sec:authorize="hasRole('ROLE_USER')"><p>用户能看到</p></div>
+
+
+<form th:action="@{/logout}" action="/logout" method="post">
+        <input class="token_value" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" value="登出"/>
+</form>
+姓名:<input type="text" class="user_name" value="" /></br>
+身份证:<input type="text" class="user_certificate" value="" /></br>
+邮箱:<input type="text" class="user_email" value="" /></br>
+电话:<input type="text" class="user_phone" value="" /></br>
+用户类型:<input type="text" class="user_type" value="" /></br>
+用户名:<input type="text" class="user_user_name" value="" /></br>
+密码:<input type="text" class="user_password" value="" /></br>
+<button class="create">添加</button>
+
+<button class="get">获取</button>
+<table class="table">
+<tr class="tr">
+<td class="td">姓名</td>
+<td class="td">身份证</td>
+<td class="td">邮箱</td>
+<td class="td">电话</td>
+<td class="td">操作</td>
+</tr>
+
+
+
+
+</table>
+<script type="text/javascript" src="/lib/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/lib/layer/layer.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.create').on('click',function(){
+       $.ajax({
+    	    url:"http://localhost:7080/api/user",
+    	    type:"post",
+    	    contentType: 'application/json;charset=utf-8',
+		    data:JSON.stringify({
+			name:$('.user_name').val(),   
+			certificate:$('.user_certificate').val(),
+			email:$('.user_email').val(),
+			phone:$('.user_phone').val(),
+			userType:$('.user_type').val(),
+			password:$('.user_password').val(),
+			userName:$('.user_user_name').val()
+		    }),
+		   function(){
+			   layer.msg("添加成功");
+			},
+		     error:function (request, status, error) {
+	                var json = JSON.parse(request.responseText); 
+	                layer.msg(json.message);
+	        }
+    	   
+    	   
+       })		
+		
+		
+	})
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'http://localhost:7080/api/user',
+			type:"get",
+			success:function(result,textStatus){
+				console.info(result);
+				console.info(textStatus);
+				if(result!=null&&result.content!=null&&result.content.length>0){
+					for(var i=0;i<result.content.length;i++){
+						var html ='<tr><td class="td">'+result.content[i].name+'</td><td class="td">'+result.content[i].certificate+'</td><td class="td">'+result.content[i].email+'</td><td class="td">'+result.content[i].phone+'</td><td class="td"><button class="update" style="float:left;height:100%;width:50px" data-id='+result.content[i].id+'>修改</button><button class="delete" style="float:left;height:100%;width:50px" data-id='+result.content[i].id+'>删除</button></td></tr>';
+						$('.table').append(html);
+						}
+				}
+				
+			}
+		})
+	})
+	//update 是创建出来的   需要绑定全局
+	$(document).on('click','.update',function(e){
+		var id = (e.target).getAttribute('data-id');
+		$.ajax({
+			url:"http://localhost:7080/api/user/"+id,
+			type:"patch",//ajax支持patch 详解 : http://blog.csdn.net/u011548068/article/details/58591609
+			contentType: 'application/json;charset=utf-8',
+			data:JSON.stringify({
+				name:"梅寒香大神6666"
+			}),
+			success:function(res){
+				layer.msg("修改成功");
+			},
+		     error:function (request, status, error) {
+	                var json = JSON.parse(request.responseText); 
+	                layer.msg(json.message);
+	        }
+		})
+		
+	})
+	
+	$(document).on('click','.delete',function(e){
+		var id = (e.target).getAttribute('data-id');
+		$.ajax({
+			url:"http://localhost:7080/api/user/"+id,
+			type:"delete",//ajax支持patch 详解 : http://blog.csdn.net/u011548068/article/details/58591609
+			success:function(res){
+				layer.msg("删除成功");
+			},
+		     error:function (request, status, error) {
+	                var json = JSON.parse(request.responseText); 
+	                layer.msg(json.message);
+	        }
+		})
+		
+	})
+	
+	
+	
+	
+})
+
+
+
+</script>
 </body>
 </html>

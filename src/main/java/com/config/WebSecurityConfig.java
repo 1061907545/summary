@@ -1,5 +1,7 @@
 package com.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +14,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.service.UserService;
 
@@ -51,11 +57,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    	  http  
+    	http
           .authorizeRequests()  
           .antMatchers("/login").permitAll()//访问：/home 无需登录认证权限  
           .anyRequest().authenticated() //其他所有资源都需要认证，登陆后访问  
           //.antMatchers("/index").hasAuthority("ADMIN") //登陆后之后拥有“ADMIN”权限才可以访问/hello方法，否则系统会出现“403”权限不足的提示  
+          .and()
+          .csrf()
+			.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
           .and()  
           .formLogin()  
           .loginPage("/login")//指定登录页是”/login”  
@@ -72,5 +81,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
           //.and()  
           //.rememberMe()//登录后记住用户，下次自动登录,数据库中必须存在名为persistent_logins的表  
           //.tokenValiditySeconds(1209600);  
+    	  http.httpBasic().disable().headers().disable().csrf().disable();//关闭csrf
     }
+    @Bean
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedMethods(Arrays.asList("GET","POST","PATCH","DELETE"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 }
